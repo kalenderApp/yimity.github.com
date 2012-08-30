@@ -1,0 +1,212 @@
+			var canvas = document.getElementById("canvas");
+			var x = canvas.height/2;
+			var y = canvas.width/2;
+			var context = canvas.getContext("2d");
+			context.translate(0,400);
+			context.rotate(-Math.PI/2);
+			if (canvas){
+				
+				var timer = setInterval(function(){
+						var alltime = audioLoaded();
+						var currenttime = currentTimeit();
+						var i = (currenttime/alltime)*2;
+						if( i >= 2){
+							clearTimeout(timer);
+						}
+						context.fillStyle = '#EEEEFF';
+						context.fillRect(0,0,400,400);
+						context.beginPath();
+						context.arc(x,y,47,0,(Math.PI*i),false);
+						context.strokeStyle = 'red';
+						context.lineWidth = '10';
+						context.stroke();
+					},1000);
+				
+			}
+
+
+
+			var play = document.getElementById("play");
+			//var stop = document.getElementById("stop");
+			var audioisloaded = document.getElementById("audio");
+			//var rate = document.getElementById("rate");
+			//var timediv = document.getElementById("timediv");
+			function audioLoaded(){
+				var audioisloaded = document.getElementById("audio");
+				if (audioisloaded.load){
+					var durationinnertext = document.getElementById("time");
+					var duration = parseInt(audioisloaded.duration);
+					//var mints = parseInt(duration/60);
+					//var secds = duration%60;
+					//if (secds < 10){
+					//	secds = "0" + secds;
+					//}
+					//var tiime = (mints+ ":" +secds).toString();
+					durationinnertext.innerHTML = duration;
+				}
+				return duration
+			}
+			//setTimeout("audioLoaded()",500);
+			//setInterval("currentTimeit()",1000);
+			//setInterval("widthit()",1000);
+			function currentTimeit(){
+				var durationinnertext = document.getElementById("currtime");
+				var currentTime = parseInt(audioisloaded.currentTime);
+				//var mints = parseInt(currentTime/60);
+				//var secds = parseInt(currentTime%60);
+				//if (secds < 10){
+				//		secds = "0" + secds;
+				//}
+				//var tiime = (mints+ ":" +secds).toString();
+				durationinnertext.innerHTML = currentTime;
+				return currentTime
+			}
+			function widthit() {
+				var currentTime = audioisloaded.currentTime;
+				var duration = parseInt(audioisloaded.duration);
+				var width = (currentTime/duration)*696;
+				if (width > 696){
+					width = 696;
+				}
+				rate.style.width = width + "px";
+				timediv.style.marginRight = (699 - width) + "px";
+			}
+			function playit() {
+				var status = this.getAttribute('class');
+				console.log(status);
+				if (status == 'stop') {
+					audioisloaded.play();
+					//audioisloaded.setAttribute("autoplay","autoplay");
+					this.setAttribute('class','playing');
+					//this.style.backgroundPosition = '0 -168px'; 
+				}else{
+					stopit();
+				}
+			}
+			function stopit() {
+				audioisloaded.pause();
+				play.setAttribute('class','stop');
+			}
+			//audioisloaded.addEventListener("timeupdate",audioLoaded,false);
+			audioisloaded.addEventListener("durationchange",audioLoaded,false);
+			//audioisloaded.addEventListener("ended",ajax,false);
+			//audioisloaded.play();
+			//audioisloaded.ondurationchange = audioLoaded;
+			play.addEventListener("click",playit,false);
+			//stop.addEventListener("click",stopit,false);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		/*
+		var w = 10, h = 3;
+		var canvas = document.getElementById("canvas");
+		var color = '#000';
+		function draw(x,y) {
+		x = x; y = y;
+			if (canvas.getContext){
+				var context = canvas.getContext("2d");
+				drawit(context,x,y);
+				context.fill();//填充
+				context.stroke();//画线
+			}
+		}
+		//setInterval("draw()",300);
+		//canvas.addEventlistener("mousemove",draw,false);
+		
+		function drawit(context,x,y){
+				context.fillStyle = 'red';
+				context.strokeStyle = color;
+				//context.fillRect(x,y,w,h);
+				context.lineWidth = 10;
+				context.moveTo(x, y);//将画笔移到x0,y0处
+				context.lineTo(x-10, y-10);//从x0,y0到x1,y1画一条线
+				
+		}
+		var dv = document.getElementById('canvas');
+		dv.onmousedown = function(){
+			down = true;
+		}
+		down = false;
+		dv.onmouseup = function(){
+			down = false;
+		}
+		dv.onmousemove=function(e){
+			var d=document;
+			e = e || window.event;
+			var x= e.layerX || e.offsetX;
+			var y= e.layerY || e.offsetY;
+			if (down == true){
+				draw(x,y);
+			}
+			console.log(x+'|'+y);
+		}
+		
+		var blue = document.getElementById("blue");
+		blue.addEventListener("click",function(){color = 'blue';},false);
+		var red = document.getElementById("red");
+		red.addEventListener("click",function(){color = 'red';},false);
+*/
+
+
+/*
+
+
+
+
+		var dv = document.getElementById('body');
+		//var dv = document.getElementsByTagName('body')[0];
+		var x1=0,x2=0,y1=0,y2=0;
+		dv.onmousedown = function(e){
+			var d=document;
+			e = e || window.event;
+			x1= e.layerX || e.offsetX;
+			y1= e.layerY || e.offsetY;
+			console.log(x1+'|'+y1);
+		}
+		dv.onmouseup = function(e){
+			var d=document;
+			e = e || window.event;
+			x2= e.layerX || e.offsetX;
+			y2= e.layerY || e.offsetY;
+			console.log(x2+'|'+y2);
+			console.log((x2-x1)*(y2-y1));
+		}
+		dv.onmousemove=function(e){
+			var d=document;
+			e = e || window.event;
+			var x= e.layerX || e.offsetX;
+			var y= e.layerY || e.offsetY;
+			console.log(x+'/'+y);
+		}
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+

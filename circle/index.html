@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Draw Something</title>
+		<style>
+			body {padding:0;margin:0;}
+			#stage {width:400px;height:400px;margin:0 auto;position:relative;}
+			#canvas{width:400px;height:400px;background:#CCC;}
+			#play {width:84px;height:84px;position:absolute;top:159px;left:158px;}
+			.stop {background:url(images/controls.png) 0 0 no-repeat;}
+			.stop:hover {background-position: 0 -84px;}
+			.playing {background:url(images/controls.png) 0 -168px no-repeat;}
+			.playing:hover {background-position: 0 -252px;}
+		</style
+	</head>
+	<body id="body">
+		<audio id="audios">
+			<source src="Drenched-Wanting.mp3" type="audio/mpeg">
+			<source src="so-stupid.ogg" type="audio/ogg">
+		</audio>
+		<div id="stage">
+			<canvas id="canvas" width="400px" height="400px";></canvas>
+			<div id="play" class="stop"></div>
+		</div>
+		<span id="currtime"></span> | <span id="time"></span>
+		<script type="text/javascript" src="script/draw.js"></script>
+		<script type="text/javascript">
+			circle.rotate('canvas');
+			circle.draw('canvas','audios',2,'#EFEFEF');
+			circle.draw('canvas','audios',0.7,'#FDFDFD');
+			var play = document.getElementById("play");
+			play.addEventListener("click",function(){circle.play('audios','play')},false);
+		</script>
+	</body>
+</html>
