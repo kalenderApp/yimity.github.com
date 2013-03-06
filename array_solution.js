@@ -3,7 +3,7 @@
   如果不需要考虑顺序问题的话，只需要一个数组，闭包也都不需要。
   不知道效率如何。没有测试。
   
-  只是测试页面 http://coolshell.cn/t.html
+  这是面 http://coolshell.cn/t.html
   
   这是问题 http://weibo.com/1401880315/zm4Yv2ZPO
 */
