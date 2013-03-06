@@ -9,20 +9,19 @@
 */
 
 function array_solution2(){
-  var arr = [], temp = [];
-  for (var i = 0; i < total; i++) {
-	(function(j){
-	    	xss_rpc_call2(j, function(result){
-			arr[j] = result;
-	  		temp.push(result);
-	  		if (temp.length == total) {
-	  			var n = 0;
-	  			while(arr.length){
-	          			display_result ("coolshell_array", n++ +"," + arr.shift());
-	      			}  
-	  		}
-	  	})
-	})(i);
+	var arr = [], temp = [];
+	for (var i = 0; i < total; i++) {
+		(function(j){
+			xss_rpc_call2(j, function(result){
+				arr[j] = result;
+				temp.push(result);
+				if (temp.length == total) {
+					var n = 0;
+					while(arr.length){
+						display_result ("coolshell_array", n++ +"," + arr.shift());
+					}  
+				}
+			})
+		})(i);
  }
 }
-
