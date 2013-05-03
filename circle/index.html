@@ -1,36 +1,68 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<meta charset='utf-8'>
 		<title>Draw Something</title>
 		<style>
 			body {padding:0;margin:0;}
-			#stage {width:400px;height:400px;margin:0 auto;position:relative;}
-			#canvas{width:400px;height:400px;background:#CCC;}
-			#play {width:84px;height:84px;position:absolute;top:159px;left:158px;}
+			#stage {width:800px;height:800px;margin:0 auto;position:relative;}
+			#canvas{width:400px;height:400px;background:#CCC;float:left;}
+			#play {width:84px;height:84px;position:absolute;top:158.4px;left:157.5px;}
 			.stop {background:url(images/controls.png) 0 0 no-repeat;}
 			.stop:hover {background-position: 0 -84px;}
 			.playing {background:url(images/controls.png) 0 -168px no-repeat;}
 			.playing:hover {background-position: 0 -252px;}
 		</style>
+		<link rel='stylesheet' type="text/css" href="style/style.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	</head>
 	<body id="body">
 		<audio id="audios">
-			<source src="Drenched-Wanting.mp3" type="audio/mpeg">
+			<source src="Drenched-Wanting.mp3" type="audio/ogg">
 			<source src="so-stupid.ogg" type="audio/ogg">
 		</audio>
 		<div id="stage">
 			<canvas id="canvas" width="400px" height="400px";></canvas>
+			<canvas id="canvas1" width="400px" height="400px";></canvas>
 			<div id="play" class="stop"></div>
 		</div>
 		<span id="currtime"></span> | <span id="time"></span>
-		<script type="text/javascript" src="script/draw.js"></script>
+		<script type="text/javascript" src="script/circle.js"></script>
 		<script type="text/javascript">
-			circle.rotate('canvas');
-			circle.draw('canvas','audios',2,'#EFEFEF');
-			circle.draw('canvas','audios',0.7,'#FDFDFD');
-			var play = document.getElementById("play");
-			play.addEventListener("click",function(){circle.play('audios','play')},false);
+			circle.options.fillstyle = '#CCC';
+			circle.rotate('canvas',2);
+			circle.draw('canvas',2);
+			var play = circle.getId("play");
+			play.addEventListener("click",palyIt,false);
+			function palyIt(){
+				circle.play('audios','play');
+			}
+			function processBar(){
+				var alltime = circle.allTime("audios");
+				var currenttime = circle.curtTime("audios");
+				if (circle.getId("audios").buffered.length == 1) {
+					var buffered = circle.getId("audios").buffered.end(0);
+					var bfrpret = (buffered/alltime)*2;
+					if (parseInt(buffered) <= alltime) {
+						circle.options.strokestyle = '#CCC';
+						circle.options.linewidth = 2;
+						circle.options.radius = 43;
+						circle.draw('canvas',bfrpret);
+					}
+				};
+				var i = (currenttime/alltime)*2;
+				circle.options.strokestyle = '#D7F59A';
+				circle.options.linewidth = 10;
+				circle.options.radius = 47;
+				circle.draw('canvas',i);
+				console.log(i);
+			}
+
+		function stopIt(object,play){
+				clearInterval(timer);
+				object.pause();
+				play.setAttribute('class','stop');
+			}
 		</script>
 	</body>
 </html>
