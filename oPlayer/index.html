@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>oSpring - Player</title>
+    <link type="text/css" rel="stylesheet" charset="utf-8" href="stylesheet/piblic.css"/>
+    <link type="text/css" rel="stylesheet" charset="utf-8" href="stylesheet/oplayer.css"/>
+</head>
+<body>
+    <div id="oplayer">
+        <div class="videoctrl">
+            <div class="playarea left">
+                <div id="prev" class="left"></div>
+                <div id="play" class="left"></div>
+                <div id="next" class="left"></div>
+            </div>
+            <div class="processbar left">
+                <span id="currenttime" class="left">2:35</span>
+                <div id="processbg" class="left">
+                    <div id="process"></div>
+                </div>
+                <span id="duration" class="left">4:56</span>
+            </div>
+            <div class="operation left">
+                <div id="volume" class="left"></div>
+                <div id="random" class="left"></div>
+                <div id="repeat" class="left"></div>
+                <div id="favourite" class="left"></div>
+            </div>
+        </div>
+    </div>
+    <audio id="audio">
+        <source src="media/Drenched-Wanting.mp3" class="source" type="audio/mpeg">
+        <source src="media/Drenched-Wanting.mp3" class="source" type="audio/ogg">
+    </audio>
+</body>
+<script type="text/javascript" src="javascript/media.js"></script>
+</html>
