@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>alterCheckBox</title>
+    <link type="text/css" rel="stylesheet" href="style/layout.css">
+    <script type="text/javascript" src="script/jquery.min.js?v=1.8"></script>
+</head>
+<body>
+    <form action="/" method="post">
+        <input type="checkbox" name="a2" value="a2" class="checkbox">
+        <input type="checkbox" name="a1" value="a1" checked class="checkbox checked">
+        <input type="checkbox" name="a4" value="a4" class="checkbox">
+        <input type="checkbox" name="a3" value="a3" checked class="checkbox checked">
+    </form>
+    <form action="/" method="post">
+        <input type="checkbox" name="a1" value="a1" checked class="checkbox2 checked1">
+        <input type="checkbox" name="a2" value="a2" class="checkbox2">
+        <input type="checkbox" name="a3" value="a3" checked class="checkbox2 checked1">
+        <input type="checkbox" name="a4" value="a4" class="checkbox2">
+    </form>
+    <script type="text/javascript" src="script/altercheckbox.js?v=1"></script>
+    <script type="text/javascript">
+        $(".checkbox").alterCheckBox({
+            checked:"checked",
+            unchecked:"unchecked"
+        });
+        $(".checkbox2").alterCheckBox({
+            checked:"checked2",
+            unchecked:"unchecked2"
+        });
+    </script>
+</body>
+</html>
